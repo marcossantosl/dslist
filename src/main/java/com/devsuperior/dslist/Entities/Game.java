@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb-game")
+@Table(name = "tb_game")
 public class Game {
 
 @Id
@@ -21,25 +21,33 @@ public class Game {
  @Column(name = "game_year")
  private Integer year;
  private String genre;
- private String platfortm;
+ private String platforms;
+ private double score;
  private String imgUrl;
+
+ @Column(columnDefinition = "TEXT")
  private String shortDescription;
+
+ @Column(columnDefinition = "TEXT")
  private String longDescription; 
  
  public Game() {
 }
 
-public Game(Long id, String title, Integer year, String genre, String platfortm, String imgUrl, String shortDescription,
+public Game(Long id, String title, Integer year, String genre, String platforms,Double score, String imgUrl, String shortDescription,
  String longDescription) {
 this.id = id;
 this.title = title;
 this.year = year;
 this.genre = genre;
-this.platfortm = platfortm;
+this.platforms = platforms;
+this.score = score;
 this.imgUrl = imgUrl;
 this.shortDescription = shortDescription;
 this.longDescription = longDescription;
 }
+
+
 
  public Long getId() {
     return id;
@@ -66,11 +74,20 @@ public void setGenre(String genre) {
     this.genre = genre;
 }
 public String getPlatfortm() {
-    return platfortm;
+    return platforms;
 }
 public void setPlatfortm(String platfortm) {
-    this.platfortm = platfortm;
+    this.platforms = platfortm;
 }
+
+public double getScore() {
+    return score;
+}
+
+public void setScore(double score) {
+    this.score = score;
+}
+
 public String getImgUrl() {
     return imgUrl;
 }
@@ -114,6 +131,7 @@ public boolean equals(Object obj) {
         return false;
     return true;
 }
+
 
 
  }
