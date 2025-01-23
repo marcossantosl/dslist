@@ -1,3 +1,5 @@
+//Entidade 
+
 package com.devsuperior.Dslist.Entities;
 
 import java.util.Objects;
