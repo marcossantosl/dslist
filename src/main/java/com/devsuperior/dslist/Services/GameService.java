@@ -8,6 +8,7 @@ import java.util.List;
 import com.devsuperior.Dslist.Dto.GameDTO;
 import com.devsuperior.Dslist.Dto.GameMinDTO;
 import com.devsuperior.Dslist.Entities.Game;
+import com.devsuperior.Dslist.projections.GameMinProjection;
 import com.devsuperior.Dslist.repositories.GameRepository;
 
 
@@ -37,4 +38,12 @@ public class GameService {
         List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();//Cria uma lista do tipo game mindto que em que todo objeto que era x original que era game transforma em new gamemindto passando x como argumento e transforma em uma lista de dto
         return dto;
     }
+
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+       return result.stream().map(x -> new GameMinDTO(x)).toList();//Cria uma lista do tipo game mindto que em que todo objeto que era x original que era game transforma em new gamemindto passando x como argumento e transforma em uma lista de dto
+    }
+
 }
